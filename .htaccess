@@ -1,0 +1,17 @@
+RewriteEngine on
+RewriteBase /
+
+# if inside iobm
+RewriteRule ^iobm/?$ /index.php?iobm [L,NC]
+
+# if inside iobm
+RewriteRule ^mobile/?$ /index.php?mobile [L,NC]
+
+# code
+RewriteRule ^course/([a-zA-Z]{3}\d{3}[a-zA-Z])/?$ /courses.php?code=$1 [L,NC]
+# code, day
+RewriteRule ^course/([a-zA-Z]{3}\d{3}[A-Z])/([a-zA-Z]+)/?$ /courses.php?code=$1&day=$2 [L,NC]
+# code, day, date
+RewriteRule ^course/([a-zA-Z]{3}\d{3}[A-Z])/([a-zA-Z]+)/([a-zA-Z0-9+\-_\s+,]+)/?$ /courses.php?code=$1&day=$2&date=$3 [L,NC]
+# code, day, date, time
+RewriteRule ^course/([a-zA-Z]{3}\d{3}[A-Z])/([a-zA-Z]+)/([a-zA-Z0-9+\-_\s+,]+)/([a-zA-Z0-9+\-_:\s+]+)/?$ /courses.php?code=$1&day=$2&date=$3&time=$4 [L,NC]
