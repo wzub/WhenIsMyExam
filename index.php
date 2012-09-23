@@ -28,7 +28,6 @@ $config['secret'] = 'cfd4a28c4a4eb26fa3b9f7a9e94d24ff';
 $facebook = new Facebook($config);
 
 $user = $facebook->getUser();
-
 $signed_request = $facebook->getSignedRequest();
 
 if ($user) {
@@ -85,32 +84,7 @@ if(window==top){top.location="https://apps.facebook.com/whenismyexam/";}
 <script type="text/javascript">
 // want to see the source code?
 // get in touch: https://facebook.com/doubleudesigns
-$(function(){$("body").addClass("js");$("<div/>",{id:"loader"}).appendTo("#meta").hide();
-$("#doubleu").clone().appendTo("#disclaimer .modal-body");$("#social").clone().appendTo("#likeprompt .modal-body").find(".fb-like").attr("data-width","280").parent().find(".fbshare img").attr("src","style/img/social/fbshare.gif");
-$("[rel=tooltip]").tooltip({placement:$(this).data("trigger")?$(this).data("trigger"):"top",trigger:$(this).data("trigger")?$(this).data("trigger"):"hover"});
-var b=$("#note-inner");var g=$("#loader");var i=$("#error");var e=$("#success");var a=$("#courseid");var h=$(".alert");var f=$("#searchform");h.add(".help-block").hide();
-Form={refresh:function(){l=false;a.val("").parent().removeClass("success error").find("p.help-block").html("");h.add(".help-block").hide();b.fadeIn();},valid:function(){l=true;
-a.parent().removeClass("error").addClass("success").find("p.help-block").fadeOut().html("");},invalid:function(){l=false;a.parent().removeClass("success").addClass("error").find("p.help-block").hide().html("Enter a valid course code and section, please").fadeIn();
-},execute:function(o){if(k==0){$("#disclaimer").show().modal();k++;}var p=["schedule/rescheduled.html","schedule/mon-wed.html","schedule/tues-thurs.html","schedule/sat.html","schedule/sun.html"];
-function m(t){var q=jQuery.Deferred();function s(v){return jQuery.ajax({url:v,beforeSend:function(){b.hide();g.show();},dataType:"html"});}function r(A){var y=$(A).find("td:contains('"+o+"')");
-if(y.length!==0){var z=y.closest("table");var B=z.find(".day p").eq(y.index()).html();var w=z.find(".date p").eq(y.index()).html();var D=z.find(".time p").eq(y.index()).html();
-var C=y.find("p").eq(-2).html();var v=y.find("p").eq(-1).html();var E=y.find("p.orig_time").html();var x={day:B,date:Date.parse(w).toString("MMMM d, yyyy"),slot:D,title:C?C:"",teacher:v?v:"",rescheduled:E?E:""};
-return x;}}function u(){if(q.state()!=="pending"){return;}if(t.length==0){q.reject();return;}s(t.shift()).pipe(r,u).done(function(v){if(v){q.resolve(v);
-}else{u();}});}u();return q.promise();}var n=m(p);n.always(function(){g.hide();$("#againLink").parent().show();});n.done(function(s){d++;var w=Date.today();
-var v=Date.parse(s.date);var C=new TimeSpan(v-w);var y=C.days;var B=Date.compare(w,v);s.slot=s.slot.split("-");var t=new TimeSpan(s.slot[0].split(":"));
-var x="That";if(y>0){x+="'s ";if(y>1){x+=y+" days from today. ";}else{if(y==1){x+="tomorrow. ";}}x+="Study well!";}else{if(y==0){x+="'s today! OMG.";}else{if(y<0){x+=" was ";
-if(y<-1){x+=(y*(-1))+" days ago. ";}else{if(y==-1){x+="yesterday. ";}}x+="Hope it went well!";}}}var r=s.date.replace(/[,\s]+/g,"-");var q=s.slot[0].replace(/[:,\s]+/g,"-");
-var A="<a onclick=\"sendResult('"+o+"', '"+s.day+"','"+r+"', '"+q+'\'); return false;" href="#" class="btn btn-small"><i class="icon-envelope"></i><span>Send this result</span></a>';
-var u="";if(s.teacher&&s.title){u="<p>"+s.teacher+" ("+o+") <br/>"+s.title+"</p>";}var z="";if(s.rescheduled){z="<p><small><span class='label label-important'>Originally scheduled for "+s.rescheduled+"</span></small></p>";
-}$("#success p").html("The exam for <strong><abbr rel='tooltip' title='"+s.title+"'>"+o+"</abbr></strong> is on <p class='spaced'><b class='big'>"+s.date+"</b><br/>"+s.day+" @ "+s.slot[0]+" (till "+s.slot[1]+").</p><p>"+x+"</p>"+z+u).parent().fadeIn().find("span#sendbutton").html(A);
-$("#againLink").addClass("successful");$("#success abbr").tooltip();postFBStory(o,s.day,s.date,s.slot[0]);});n.fail(function(){i.fadeIn().find("p span").html(o);
-c++;if(c>3){i.find("p.toomanyerrors").html('<p>You seem to be getting a lot of errors. Would you like to <a data-toggle="modal" href="#disclaimer">get in touch</a> with the developer?</p>');
-}});}};var l=false;a.mask("aaa999a",{placeholder:"",completed:function(){Form.valid();},autoclear:false});$(".dismiss").on("click",function(){$(this).parent().parent().modal("hide");
-});function j(){$("#course_list_table tr").on("click",function(){var m=$(this).find("td").eq(0).html();a.val(m);$("#course_list").modal("hide");});}$("#course_list_trigger").on("click",function(){if($("#course_list_container").hasClass("loaded")==false){g.clone().show().appendTo("#course_list_container").parent().load("list.html",function(){$(this).addClass("loaded").find("#loader").remove();
-$("#course_list_filter").quicksearch("#course_list_table tbody tr",{noResults:"#noresults",loader:g});j();});}});$("#course_list_filter").quicksearch("#course_list_table tbody tr");
-var k=0;var d=0;var c=0;$("#againLink").add("#title a").on("click",function(m){m.preventDefault();if($(this).hasClass("successful")&&(d==1||d==3||d==6)){$("#likeprompt").modal();
-$(this).removeClass("successful");}Form.refresh();});f.on("submit",function(o){o.preventDefault();var n=a.val().toUpperCase();n=$.trim(n.replace(/\s+/g,""));
-var m=/^[A-Z]{3}\d{3}[A-Z]/;if(m.exec(n)){Form.valid();}else{Form.invalid();return;}if(l==true){Form.execute(n);}else{Form.invalid();}});});
+$(function(){$('body').addClass('js');$('<div/>',{id:'loader'}).appendTo('#meta').hide();$('#doubleu').clone().appendTo('#disclaimer .modal-body');$('#social').clone().appendTo('#likeprompt .modal-body').find('.fb-like').attr('data-width','280').parent().find('.fbshare img').attr('src','style/img/social/fbshare.gif');$("[rel=tooltip]").tooltip({placement:$(this).data('trigger')?$(this).data('trigger'):'top',trigger:$(this).data('trigger')?$(this).data('trigger'):'hover'});var $mainContainer=$("#note-inner");var $loader=$("#loader");var $error=$("#error");var $success=$("#success");var $courseid=$('#courseid');var $alert=$('.alert');var $searchform=$('#searchform');$alert.add('.help-block').hide();Form={refresh:function(){mask_done=false;$courseid.val('').parent().removeClass('success error').find('p.help-block').html("");$alert.add('.help-block').hide();$mainContainer.fadeIn()},valid:function(){mask_done=true;$courseid.parent().removeClass('error').addClass('success').find('p.help-block').fadeOut().html("")},invalid:function(){mask_done=false;$courseid.parent().removeClass('success').addClass('error').find('p.help-block').hide().html("Enter a valid course code and section, please").fadeIn()},execute:function(q){if(search_count==0){$('#disclaimer').show().modal();search_count++}var urls=["schedule/mon-wed.html","schedule/tues-thurs.html","schedule/sat.html","schedule/sun.html"];function Finder(urls){var dfd=jQuery.Deferred();function fetchUrl(url){return jQuery.ajax({url:url,beforeSend:function(){$mainContainer.hide();$loader.show()},dataType:'html'})}function parseMatch(res){var $result=$(res).find("td:contains('"+q+"')");if($result.length!==0){var $closest=$result.closest('table');var day=$closest.find(".day p").eq($result.index()).html();var date=$closest.find('.date p').eq($result.index()).html();var slot=$closest.find('.time p').eq($result.index()).html();var title=$result.find('p').eq(-2).html();var teacher=$result.find('p').eq(-1).html();var rescheduled=$result.find('p.orig_time').html();var timetable={'day':day,'date':Date.parse(date).toString('MMMM d, yyyy'),'slot':slot,'title':title?title:'','teacher':teacher?teacher:'','rescheduled':rescheduled?rescheduled:''};return timetable}}function getMatch(){if(dfd.state()!=="pending"){return}if(urls.length==0){dfd.reject();return}fetchUrl(urls.shift()).pipe(parseMatch,getMatch).done(function(data){if(data){dfd.resolve(data)}else{getMatch()}})}getMatch();return dfd.promise()}var f=Finder(urls);f.always(function(){$loader.hide();$('#againLink').parent().show()});f.done(function(timetable){success_count++;var today=Date.today();var date_un=Date.parse(timetable.date);var diff_num=new TimeSpan(date_un-today);var diff_num_d=diff_num['days'];var comparison=Date.compare(today,date_un);timetable.slot=timetable.slot.split("-");var slot_h=new TimeSpan(timetable.slot[0].split(":"));var diff="That";if(diff_num_d>0){diff+="'s ";if(diff_num_d>1){diff+=diff_num_d+" days from today. "}else if(diff_num_d==1){diff+="tomorrow. "}diff+="Study well!"}else if(diff_num_d==0){diff+="'s today! OMG."}else if(diff_num_d<0){diff+=" was ";if(diff_num_d<-1){diff+=(diff_num_d*(-1))+" days ago. "}else if(diff_num_d==-1){diff+="yesterday. "}diff+="Hope it went well!"}var send_date=timetable.date.replace(/[,\s]+/g,'-');var send_time=timetable.slot[0].replace(/[:,\s]+/g,'-');var sendbutton='<a onclick="sendResult(\''+q+'\', \''+timetable.day+'\',\''+send_date+'\', \''+send_time+'\'); return false;" href="#" class="btn btn-small"><i class="icon-envelope"></i><span>Send this result</span></a>';var small_info='';if(timetable.teacher&&timetable.title){small_info="<p>"+timetable.teacher+" ("+q+") <br/>"+timetable.title+"</p>"}var rescheduled='';if(timetable.rescheduled){rescheduled="<p><small><span class='label label-important'>Originally scheduled for "+timetable.rescheduled+"</span></small></p>"}$("#success p").html("The exam for <strong><abbr rel='tooltip' title='"+timetable.title+"'>"+q+"</abbr></strong> is on <p class='spaced'><b class='big'>"+timetable.date+"</b><br/>"+timetable.day+" @ "+timetable.slot[0]+" (till "+timetable.slot[1]+").</p><p>"+diff+"</p>"+rescheduled+small_info).parent().fadeIn().find('span#sendbutton').html(sendbutton);$("#againLink").addClass('successful');$('#success abbr').tooltip();postFBStory(q,timetable.day,timetable.date,timetable.slot[0])});f.fail(function(){$error.fadeIn().find('p span').html(q);error_count++;if(error_count>3){$error.find('p.toomanyerrors').html('<p>You seem to be getting a lot of errors. Would you like to <a data-toggle="modal" href="#disclaimer">get in touch</a> with the developer?</p>')}})}};var mask_done=false;$courseid.mask("aaa999a",{placeholder:"",completed:function(){Form.valid()},autoclear:false});$('.dismiss').on("click",function(){$(this).parent().parent().modal('hide')});function course_list_loaded(){$('#course_list_table tr').on("click",function(){var tr_val=$(this).find('td').eq(0).html();$courseid.val(tr_val);$('#course_list').modal('hide')})}$('#course_list_trigger').on("click",function(){if($('#course_list_container').hasClass('loaded')==false){$loader.clone().show().appendTo('#course_list_container').parent().load('list.html',function(){$(this).addClass('loaded').find('#loader').remove();$('#course_list_filter').quicksearch('#course_list_table tbody tr',{noResults:'#noresults',loader:$loader});course_list_loaded()})}});$('#course_list_filter').quicksearch('#course_list_table tbody tr');var search_count=0;var success_count=0;var error_count=0;$('#againLink').add('#title a').on("click",function(e){e.preventDefault();if($(this).hasClass('successful')&&(success_count==1||success_count==3||success_count==6)){$('#likeprompt').modal();$(this).removeClass('successful')}Form.refresh()});$searchform.on("submit",function(e){e.preventDefault();var q=$courseid.val().toUpperCase();q=$.trim(q.replace(/\s+/g,''));var pattern=/^[A-Z]{3}\d{3}[A-Z]/;if(pattern.exec(q)){Form.valid()}else{Form.invalid();return}if(mask_done==true){Form.execute(q)}else{Form.invalid()}})});
 </script>
 
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -119,12 +93,7 @@ var m=/^[A-Z]{3}\d{3}[A-Z]/;if(m.exec(n)){Form.valid();}else{Form.invalid();retu
 <body lang="en">
 <div id="fb-root"></div>
 <script>
-window.fbAsyncInit=function(){FB.init({appId:"374368595928882",channelUrl:window.location.protocol+"//"+window.location.host+"/channel.html",status:!0,cookie:!0,xfbml:!0});FB.getLoginStatus(function(a){"connected"===a.status?(accessToken=a.authResponse.accessToken,console.log("Logged in, authorized. All set.")):"not_authorized"===a.status?(a="https://www.facebook.com/dialog/oauth/?client_id=374368595928882&redirect_uri=https://apps.facebook.com/whenismyexam/",a+="&scope=publish_actions",window.top.location=
-a):console.log("Not logged in to Facebook.")});FB.Canvas.setSize();FB.Canvas.setDoneLoading()};
-function postToFeed(){FB.ui({method:"feed",link:"http://apps.facebook.com/whenismyexam/",picture:"http://whenismyexam.herokuapp.com/style/img/fb/icon75.png",name:"When is my Exam!?",caption:"IoBM exam timetables made easy.",description:"Quick and painless exam schedule search. Just enter your course code and instantly find out when your exam is!",actions:[{name:"IoBM Schedule Search",link:"https://apps.facebook.com/whenismyexam/"}]},function(a){(!a||!a.post_id)&&console.log("Not posted to Wall")})}
-function sendResult(a,e,f,c){FB.ui({method:"send",description:"The exam for "+a+" is on "+e+", "+f+" at "+c+". Use this app to search for all your courses and instantly find out when their exams are scheduled!",name:"When is my Exam!? app",link:"https://apps.facebook.com/whenismyexam/",picture:"http://whenismyexam.herokuapp.com/style/img/Book-icon.png"},function(a){console.log(a)})}
-function postFBStory(a,e,f,c){f=f.replace(/[,\s]+/g,"-");c=c.replace(/[:]+/g,"-");a=encodeURIComponent("http://whenismyexam.herokuapp.com/course/"+a+"/"+e+"/"+f+"/"+c);FB.api("/me/whenismyexam:search?course="+a,"post",function(a){!a||a.error?console.log("post: Error occured => "+a.error.message):console.log("Post was successful! Action ID: "+a.id)})}
-(function(a){var e=a.getElementsByTagName("script")[0];a.getElementById("facebook-jssdk")||(a=a.createElement("script"),a.id="facebook-jssdk",a.async=!0,a.src="//connect.facebook.net/en_US/all.js",e.parentNode.insertBefore(a,e))})(document);
+window.fbAsyncInit=function(){FB.init({appId:'374368595928882',channelUrl:window.location.protocol+"//"+window.location.host+"/channel.html",status:true,cookie:true,xfbml:true});FB.Event.subscribe("auth.statusChange",function(a)){if(a.authResponse){var u=a.authResponse.userID;var t=a.authResponse.accessToken;console.log("Logged in, so reloading page");console.log(t);FB.api('/me',function(me){if(me.name){document.getElementById('auth-displayname').innerHTML=", "+me.name}})document.getElementById('auth-loggedout').style.display='none';document.getElementById('auth-loggedin').style.display='block'}else{console.log("App is not authorized by user")}}FB.Canvas.setSize();FB.Canvas.setDoneLoading()};function postToFeed(){var obj={method:'feed',link:'http://apps.facebook.com/whenismyexam/',picture:'http://whenismyexam.herokuapp.com/style/img/fb/icon75.png',name:'When is my Exam!?',caption:'IoBM exam timetables made easy.',description:'Quick and painless exam schedule search. Just enter your course code and instantly find out when your exam is!',actions:[{name:'IoBM Schedule Search',link:'https://apps.facebook.com/whenismyexam/'}]};function postToFeedCallback(response){if(response&&response.post_id){}else{console.log('Not posted to Wall')}}FB.ui(obj,postToFeedCallback)}function sendResult(code,day,date,time){var obj={method:'send',description:'The exam for '+code+' is on '+day+', '+date+' at '+time+'. Use this app to search for all your courses and instantly find out when their exams are scheduled!',name:'When is my Exam!? app',link:'https://apps.facebook.com/whenismyexam/',picture:'http://whenismyexam.herokuapp.com/style/img/Book-icon.png'};FB.ui(obj,function(response){console.log(response)})}function postFBStory(code,day,date,time){date=date.replace(/[,\s]+/g,'-');time=time.replace(/[:]+/g,'-');var storyurl=encodeURIComponent('http://whenismyexam.herokuapp.com/course/'+code+'/'+day+'/'+date+'/'+time);FB.api('/me/whenismyexam:search'+'?course='+storyurl,'post',function(response){if(!response||response.error){console.log('post: Error occured => '+response.error.message)}else{console.log('Post was successful! Action ID: '+response.id)}})}(function(d){var js,id='facebook-jssdk',ref=d.getElementsByTagName('script')[0];if(d.getElementById(id)){return}js=d.createElement('script');js.id=id;js.async=true;js.src="//connect.facebook.net/en_US/all.js";ref.parentNode.insertBefore(js,ref)}(document));
 </script>
 
 <div id="bg">
@@ -148,29 +117,27 @@ function postFBStory(a,e,f,c){f=f.replace(/[,\s]+/g,"-");c=c.replace(/[:]+/g,"-"
 			<div id="note-inner">
 				<div class="center">
 
-				<?php if ($user && !$iobm) { ?>
-					<p>Hi, <?php echo $user[first_name];?>!</p>
-				<?php } else { ?>
-					<!-- not logged in -->
-				<?php } ?>
+					<p>Hi there<span id="auth-displayname"></span>!</p>
 
 					<p class="lead">
 						Enter your <strong>course code</strong> and <strong>section</strong>.
 						<br/>Hit enter. That's it!
 					</p>
 
-				<?php if ($user || $iobm) { // if logged in, or at IoBM, show the form ?>
-					<form id="searchform">
-						<div class="control-group">
-							<p class="help-block"></p>
-							<input type="text" class="span3 input-xlarge" id="courseid" rel="tooltip" data-placement="left" data-trigger="focus" title="Eg., SSC101B" placeholder="Eg., SSC101B">
-						</div>
-						<button type="submit" class="btn-large btn btn-primary"><i class="icon-search icon-white"></i>Search</button>
-					</form>
-				<?php } else { // not logged in, not at IoBM ?>
-					<p>You'll need to authorize this app in order to use it.</p>
-					<fb:login-button scope="publish_actions" size="large" show-faces="true">Connect with Facebook</fb:login-button>
-				<?php } ?>
+					<div id="auth-loggedin">
+						<form id="searchform">
+							<div class="control-group">
+								<p class="help-block"></p>
+								<input type="text" class="span3 input-xlarge" id="courseid" rel="tooltip" data-placement="left" data-trigger="focus" title="Eg., SSC101B" placeholder="Eg., SSC101B">
+							</div>
+							<button type="submit" class="btn-large btn btn-primary"><i class="icon-search icon-white"></i>Search</button>
+						</form>
+					</div>
+
+					<div id="auth-loggedout">
+						<p>You'll need to authorize this app in order to use it.</p>
+						<fb:login-button scope="publish_actions" size="large" show-faces="true">Connect with Facebook</fb:login-button>
+					</div>
 				</div>
 
 				<div id="notice">
