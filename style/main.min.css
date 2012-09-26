@@ -17,6 +17,6 @@ p.spaced{margin:15px 0}#title{display:block;width:420px;height:71px;background:u
 #social{width:460px;margin:20px auto;padding:5px 0;border-bottom:solid 1px #ddd}#social div.pull-left{margin-right:20px}#social a.fbshare{display:block}
 #ribbon{cursor:help;position:relative;left:-9px;width:562px;height:45px;background:url(img/ribbon.png) no-repeat;text-align:center}#ribbon p{margin:0 auto;color:#fff;padding:6px 0 0 0;text-shadow:3px 2px 2px #004567}
 #error,#success{margin-top:20px}#meta{padding-top:10px;padding-bottom:0;margin-bottom:15px}#meta p{font-size:21px}.alert-error{padding:1em}#results p{font-size:19px}
-#courseid,#course_list_filter{height:36px;font-size:18px;}#courseid:focus{outline:0}[class^="icon-"],[class*=" icon-"]{background-image:url("img/glyphicons-halflings.png");margin-right:5px}
+#courseid,#course_list_filter{height:36px;font-size:18px;} #courseid:focus{outline:0}[class^="icon-"],[class*=" icon-"]{background-image:url("img/glyphicons-halflings.png");margin-right:5px}
 #heart [class^="icon-"],#heart [class*=" icon-"]{margin-right:0}.icon-white{background-image:url("img/glyphicons-halflings-white.png")}
 #doubleu{margin-top:25px}.modal #doubleu{margin-top:25px}a#footer-doubleu{background:url(img/sprite.png) no-repeat 0 -121px;display:block;width:146px;height:40px;margin:0 auto;border-radius:5px}
