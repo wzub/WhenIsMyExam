@@ -8,7 +8,7 @@ p{font:17px/140% Helvetica,Arial,sans-serif}::-moz-selection{background:#fff2a8}
 h1,h2,h3{color:#111}abbr[title],abbr{border-bottom:dotted 1px #468847;cursor:pointer}.ir{text-indent:100%;white-space:nowrap;overflow:hidden}.hidden{display:none!important;visibility:hidden}
 .center{float:none;display:block;text-align:center;margin:5px auto 0 auto;width:auto}#course_list_container{height:280px;overflow-y:scroll}#course_list_table:hover{cursor:pointer}
 .big.center{border-bottom:solid 1px #ccc}.big{font-size:1.5em;line-height:1;margin:15px 0}a,a:visited{color:#bc0000}a:hover{color:#000}a.btn{color:#000}
-a#againLink{color:#fff}a,a:focus{outline:0}input,textarea,select,.uneditable-input{height:32px;line-height:28px;padding:4px;font-size:20px}h1,#title{margin:0 auto 20px auto}
+a#againLink{color:#fff}a,a:focus{outline:0}h1,#title{margin:0 auto 20px auto}
 p.spaced{margin:15px 0}#title{display:block;width:420px;height:71px;background:url(img/sprite.png) no-repeat 0 -285px}#title a{display:block;width:420px;height:71px}
 .alert{margin-bottom:0}#course_table_container{height:300px;margin:0 auto;overflow:scroll}#error a{text-decoration:underline}#note-container,#note-top,#note-inner,#note-bottom{width:541px}
 #note-container{margin:15px auto}#note-top{background:url(img/sprite.png) no-repeat 0 -406px;height:145px}#note{background:url(img/middle.png) repeat-y;min-height:350px}
@@ -17,6 +17,6 @@ p.spaced{margin:15px 0}#title{display:block;width:420px;height:71px;background:u
 #social{width:460px;margin:20px auto;padding:5px 0;border-bottom:solid 1px #ddd}#social div.pull-left{margin-right:20px}#social a.fbshare{display:block}
 #ribbon{cursor:help;position:relative;left:-9px;width:562px;height:45px;background:url(img/ribbon.png) no-repeat;text-align:center}#ribbon p{margin:0 auto;color:#fff;padding:6px 0 0 0;text-shadow:3px 2px 2px #004567}
 #error,#success{margin-top:20px}#meta{padding-top:10px;padding-bottom:0;margin-bottom:15px}#meta p{font-size:21px}.alert-error{padding:1em}#results p{font-size:19px}
-#courseid{text-transform:uppercase;}#courseid:focus{outline:0}[class^="icon-"],[class*=" icon-"]{background-image:url("img/glyphicons-halflings.png");margin-right:5px}
+#courseid,#course_list_filter{height:36px;font-size:18px;}#courseid:focus{outline:0}[class^="icon-"],[class*=" icon-"]{background-image:url("img/glyphicons-halflings.png");margin-right:5px}
 #heart [class^="icon-"],#heart [class*=" icon-"]{margin-right:0}.icon-white{background-image:url("img/glyphicons-halflings-white.png")}
 #doubleu{margin-top:25px}.modal #doubleu{margin-top:25px}a#footer-doubleu{background:url(img/sprite.png) no-repeat 0 -121px;display:block;width:146px;height:40px;margin:0 auto;border-radius:5px}

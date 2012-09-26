@@ -78,7 +78,8 @@ if ($user) {
 
 <title>When is my exam!?</title>
 
-<script src="style/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="style/js/jquery-1.8.2.min.js"><\/script>')</script>
 <script src="style/js/scripts.js" type="text/javascript"></script>
 
 <?php if (!$mobile && !$iobm && $on_localhost != true) { ?>
@@ -108,8 +109,8 @@ var m=0,l=0,n=0;$("#againLink").add("#title a").on("click",function(a){a.prevent
 <div id="fb-root"></div>
 <script>
 var fb_appId = <?php echo $config['appId']; ?>;
-window.fbAsyncInit=function(){FB.init({status:!0,cookie:!0,xfbml:!0,appId:fb_appId,channelUrl : window.location.protocol+"//"+window.location.host+"/channel.html",});FB.Event.subscribe("auth.statusChange",function(a){a.authResponse?(a=a.authResponse.accessToken,console.log("Logged in, so reloading page"),console.log(a),FB.api("/me",function(a){a.name&&(document.getElementById("auth-displayname").innerHTML=", "+a.name)}),document.getElementById("auth-loggedout").style.display="none",document.getElementById("auth-loggedin").style.display="block"):(console.log("App is not authorized by user"),
-document.getElementById("auth-loggedout").style.display="block",document.getElementById("auth-loggedin").style.display="none")});FB.Canvas.setSize();FB.Canvas.setDoneLoading()};
+window.fbAsyncInit=function(){FB.init({appId:fb_appId,channelUrl:window.location.protocol+"//"+window.location.host+"/channel.html",status:!0,cookie:!0,xfbml:!0});FB.Event.subscribe("auth.statusChange",function(a){a.authResponse?(a=a.authResponse.accessToken,console.log("Logged in, so reloading page"),console.log(a),FB.api("/me",function(a){a.first_name&&(document.getElementById("auth-displayname").innerHTML=", "+a.first_name)}),document.getElementById("auth-loggedout").style.display="none",document.getElementById("auth-loggedin").style.display=
+"block"):(console.log("App is not authorized by user"),document.getElementById("auth-loggedout").style.display="block",document.getElementById("auth-loggedin").style.display="none")});FB.Canvas.setSize();FB.Canvas.setDoneLoading()};
 function postToFeed(){FB.ui({method:"feed",link:"http://apps.facebook.com/whenismyexam/",picture:"http://whenismyexam.herokuapp.com/style/img/fb/icon75.png",name:"When is my Exam!?",caption:"IoBM exam timetables made easy.",description:"Quick and painless exam schedule search. Just enter your course code and instantly find out when your exam is!",actions:[{name:"IoBM Schedule Search",link:"https://apps.facebook.com/whenismyexam/"}]},function(a){(!a||!a.post_id)&&console.log("Not posted to Wall")})}
 function sendResult(a,c,f,d,e){FB.ui({method:"send",description:"The exam for "+c+" ("+a+") is on "+f+", "+d+" at "+e+". Use this great app to search for your courses and instantly find out when their exams are scheduled!",name:"The exam for "+c,link:"https://apps.facebook.com/whenismyexam/",picture:"http://whenismyexam.herokuapp.com/style/img/Book-icon.png"},function(a){console.log(a)})}
 function postFBStory(a,c,f,d){f=f.replace(/[,\s]+/g,"-");d=d.replace(/[:]+/g,"-");a=encodeURIComponent("http://whenismyexam.herokuapp.com/course/"+a+"/"+c+"/"+f+"/"+d);FB.api("/me/whenismyexam:search?course="+a,"post",function(a){!a||a.error?console.log("post: Error occured => "+a.error.message):console.log("Post was successful! Action ID: "+a.id)})}function sendUpdateNotification(){}
@@ -146,11 +147,11 @@ function postFBStory(a,c,f,d){f=f.replace(/[,\s]+/g,"-");d=d.replace(/[:]+/g,"-"
 
 					<div id="auth-loggedin">
 						<form id="searchform">
-							<div class="control-group">
+							<div class="control-group input-append">
 								<p class="help-block"></p>
-								<input type="text" class="span3 input-xlarge" id="courseid" rel="tooltip" data-placement="left" data-trigger="focus" title="Eg., SSC101B" placeholder="Eg. SSC101B">
+								<input type="text" class="input-medium" id="courseid" rel="tooltip" data-placement="left" data-trigger="focus" title="Eg. SSC101B" placeholder="Eg. SSC101B">
+								<button type="submit" class="btn-large btn btn-primary"><i class="icon-search icon-white"></i></button>
 							</div>
-							<button type="submit" class="btn-large btn btn-primary"><i class="icon-search icon-white"></i>Search</button>
 						</form>
 					</div>
 
