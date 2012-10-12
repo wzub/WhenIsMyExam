@@ -91,7 +91,7 @@ if(window==top){top.location="https://apps.facebook.com/whenismyexam/";}
 <script type="text/javascript">
 // want to see the source code?
 // get in touch: https://facebook.com/doubleudesigns
-$(function(){$("body").addClass("js");$("#auth-loggedin").hide();$("<div/>",{id:"loader"}).appendTo("#meta").hide();$("#doubleu").clone().appendTo("#disclaimer .modal-body");$("#social").clone().appendTo("#likeprompt .modal-body").find(".fb-like").attr("data-width","280").parent().find(".fbshare img").attr("src","style/img/social/fbshare.gif");$("[rel=tooltip]").tooltip({placement:$(this).data("trigger")?$(this).data("trigger"):"top",trigger:$(this).data("trigger")?$(this).data("trigger"):"hover"});
+$(function(){$("body").addClass("js");$("#auth-loggedin").hide();$('input:checkbox').checkbox();$("<div/>",{id:"loader"}).appendTo("#meta").hide();$("#doubleu").clone().appendTo("#disclaimer .modal-body");$("#social").clone().appendTo("#likeprompt .modal-body").find(".fb-like").attr("data-width","280").parent().find(".fbshare img").attr("src","style/img/social/fbshare.gif");$("[rel=tooltip]").tooltip({placement:$(this).data("trigger")?$(this).data("trigger"):"top",trigger:$(this).data("trigger")?$(this).data("trigger"):"hover"});
 var a=$("#note-inner"),c=$("#loader"),f=$("#error");$("#success");var d=$("#courseid"),e=$(".alert"),i=$("#searchform");e.add(".help-block").hide();Form={refresh:function(){g=!1;d.val("").parent().removeClass("success error").find("p.help-block").html("");e.add(".help-block").hide();a.fadeIn()},valid:function(){g=!0;d.parent().removeClass("error").addClass("success").find("p.help-block").fadeOut().html("")},invalid:function(){g=!1;d.parent().removeClass("success").addClass("error").find("p.help-block").hide().html("Enter a valid course code and section, please").fadeIn()},
 execute:function(h){0==m&&($("#disclaimer").show().modal(),m++);var d,e="schedule/mon.html schedule/tues.html schedule/wed.html schedule/thurs.html schedule/fri.html schedule/sat.html schedule/sun.html".split(" "),g=function(j){var b=$(j).find("td:contains('"+h+"')");if(0!==b.length){var a=b.closest("table"),j=a.find(".day p").eq(b.index()).html(),d=a.find(".date p").eq(b.index()).html(),a=a.find(".time p").eq(b.index()).html(),c=b.find("p").eq(-2).html(),e=b.find("p").eq(-1).html(),b=b.find("p.orig_time").html();
 return{day:j,date:Date.parse(d).toString("MMMM d, yyyy"),slot:a,title:c?c:"",teacher:e?e:"",rescheduled:b?b:""}}},i=function(){if("pending"===k.state())if(0==e.length)k.reject();else{var j=e.shift();jQuery.ajax({url:j,beforeSend:function(){a.hide();c.show()},dataType:"html"}).pipe(g,i).done(function(b){b?k.resolve(b):i()})}},k=jQuery.Deferred();i();d=k.promise();d.always(function(){c.hide();$("#againLink").parent().show()});d.done(function(a){l++;var b=Date.today(),d=Date.parse(a.date),c=(new TimeSpan(d-
@@ -109,11 +109,11 @@ var m=0,l=0,n=0;$("#againLink").add("#title a").on("click",function(a){a.prevent
 <div id="fb-root"></div>
 <script>
 var fb_appId = <?php echo $config['appId']; ?>;
-window.fbAsyncInit=function(){FB.init({appId:fb_appId,channelUrl:window.location.protocol+"//"+window.location.host+"/channel.html",status:!0,cookie:!0,xfbml:!0});FB.Event.subscribe("auth.statusChange",function(a){a.authResponse?(a=a.authResponse.accessToken,console.log("Logged in, so reloading page"),console.log(a),FB.api("/me",function(a){a.first_name&&(document.getElementById("auth-displayname").innerHTML=", "+a.first_name)}),document.getElementById("auth-loggedout").style.display="none",document.getElementById("auth-loggedin").style.display=
-"block"):(console.log("App is not authorized by user"),document.getElementById("auth-loggedout").style.display="block",document.getElementById("auth-loggedin").style.display="none")});FB.Canvas.setSize();FB.Canvas.setDoneLoading()};
+window.fbAsyncInit=function(){FB.init({appId:fb_appId,channelUrl:window.location.protocol+"//"+window.location.host+"/channel.html",status:!0,cookie:!0,xfbml:!0});FB.Event.subscribe("auth.statusChange",function(a){a.authResponse?(console.log("Logged in!"),FB.api("/me",function(a){a.first_name&&(document.getElementById("auth-displayname").innerHTML=", "+a.first_name)}),document.getElementById("auth-loggedout").style.display="none",document.getElementById("auth-loggedin").style.display="block"):(console.log("App is not authorized by user"),
+document.getElementById("auth-loggedout").style.display="block",document.getElementById("auth-loggedin").style.display="none")});FB.Canvas.setSize();FB.Canvas.setDoneLoading()};
 function postToFeed(){FB.ui({method:"feed",link:"http://apps.facebook.com/whenismyexam/",picture:"http://whenismyexam.herokuapp.com/style/img/fb/icon75.png",name:"When is my Exam!?",caption:"IoBM exam timetables made easy.",description:"Quick and painless exam schedule search. Just enter your course code and instantly find out when your exam is!",actions:[{name:"IoBM Schedule Search",link:"https://apps.facebook.com/whenismyexam/"}]},function(a){(!a||!a.post_id)&&console.log("Not posted to Wall")})}
 function sendResult(a,c,f,d,e){FB.ui({method:"send",description:"The exam for "+c+" ("+a+") is on "+f+", "+d+" at "+e+". Use this great app to search for your courses and instantly find out when their exams are scheduled!",name:"The exam for "+c,link:"https://apps.facebook.com/whenismyexam/",picture:"http://whenismyexam.herokuapp.com/style/img/Book-icon.png"},function(a){console.log(a)})}
-function postFBStory(a,c,f,d){f=f.replace(/[,\s]+/g,"-");d=d.replace(/[:]+/g,"-");a=encodeURIComponent("http://whenismyexam.herokuapp.com/course/"+a+"/"+c+"/"+f+"/"+d);FB.api("/me/whenismyexam:search?course="+a,"post",function(a){!a||a.error?console.log("post: Error occured => "+a.error.message):console.log("Post was successful! Action ID: "+a.id)})}function sendUpdateNotification(){}
+function postFBStory(a,c,f,d){f=f.replace(/[,\s]+/g,"-");d=d.replace(/[:]+/g,"-");a=encodeURIComponent("http://whenismyexam.herokuapp.com/course/"+a+"/"+c+"/"+f+"/"+d);$("#fb_share_toggle").is(":checked")?FB.api("/me/whenismyexam:search?course="+a,"post",function(a){!a||a.error?console.log("post: Error occured => "+a.error.message):console.log("Post was successful! Action ID: "+a.id)}):console.log("User disallowed posting to feed")}function sendUpdateNotification(){}
 (function(a){var c=a.getElementsByTagName("script")[0];a.getElementById("facebook-jssdk")||(a=a.createElement("script"),a.id="facebook-jssdk",a.async=!0,a.src="//connect.facebook.net/en_US/all.js",c.parentNode.insertBefore(a,c))})(document);
 </script>
 
@@ -132,7 +132,7 @@ function postFBStory(a,c,f,d){f=f.replace(/[,\s]+/g,"-");d=d.replace(/[:]+/g,"-"
 				<div class="pull-left fb-like" data-href="https://whenismyexam.herokuapp.com/" data-send="false" data-width="350" data-show-faces="false"></div>
 			</div>
 			<div class="clearfix" id="ribbon">
-				<p rel="tooltip" title="Last update: September 26, 2012" >FIRST HOURLIES</p>
+				<p rel="tooltip" title="Last update: September 26, 2012">FIRST HOURLIES</p>
 			</div>
 
 			<div id="note-inner">
@@ -162,10 +162,14 @@ function postFBStory(a,c,f,d){f=f.replace(/[,\s]+/g,"-");d=d.replace(/[:]+/g,"-"
 				</div>
 
 				<div id="notice">
-					<p class="btn-group">
+					<p class="btn-group pull-right">
 						<a class="btn" data-toggle="modal" href="#disclaimer"><i class="icon-exclamation-sign"></i>Disclaimer</a>
 						<a id="course_list_trigger" class="btn" data-toggle="modal" href="#course_list"><i class="icon-th-list"></i>Course codes</a>
 					</p>
+					<div id="social_toggle">
+						<input id="fb_share_toggle" name="fb_share_toggle" type="checkbox" checked>
+						<label>Post to my Feed</label>
+					</div>
 				</div>
 			</div>
 

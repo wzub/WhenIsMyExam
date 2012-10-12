@@ -20,3 +20,8 @@ p.spaced{margin:15px 0}#title{display:block;width:420px;height:71px;background:u
 #courseid,#course_list_filter{height:36px;font-size:18px;} #courseid:focus{outline:0}[class^="icon-"],[class*=" icon-"]{background-image:url("img/glyphicons-halflings.png");margin-right:5px}
 #heart [class^="icon-"],#heart [class*=" icon-"]{margin-right:0}.icon-white{background-image:url("img/glyphicons-halflings-white.png")}
 #doubleu{margin-top:25px}.modal #doubleu{margin-top:25px}a#footer-doubleu{background:url(img/sprite.png) no-repeat 0 -121px;display:block;width:146px;height:40px;margin:0 auto;border-radius:5px}
+.jquery-checkbox{display:inline;font-size:25px;line-height:25px;cursor:pointer;cursor:hand;}
+.jquery-checkbox .mark{display:inline;}.jquery-checkbox img{vertical-align:middle;width:70px;height:25px;}
+.jquery-checkbox img{background:transparent url(img/toggle.png) no-repeat;}.jquery-checkbox img{background-position:0 0;}
+.jquery-checkbox-checked img{background-position:-83px 0;}.jquery-checkbox-disabled img{background-position:0 0;}
+.jquery-checkbox-checked .jquery-checkbox-disabled img{background-position:-83px 0;}
