@@ -132,7 +132,7 @@ function postFBStory(a,c,f,d){f=f.replace(/[,\s]+/g,"-");d=d.replace(/[:]+/g,"-"
 				<div class="pull-left fb-like" data-href="https://whenismyexam.herokuapp.com/" data-send="false" data-width="350" data-show-faces="false"></div>
 			</div>
 			<div class="clearfix" id="ribbon">
-				<p rel="tooltip" title="Last update: September 26, 2012">FIRST HOURLIES</p>
+				<p rel="tooltip" title="Last update: February 11, 2013">FIRST HOURLIES, Fall 2013</p>
 			</div>
 
 			<div id="note-inner">
